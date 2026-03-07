@@ -1,0 +1,92 @@
+:root {
+  --bg-primary:    #0f0e0c;
+  --bg-secondary:  #181714;
+  --bg-card:       #1e1c19;
+  --bg-input:      #141210;
+  --border:        #2e2b26;
+  --border-light:  #3d3a34;
+
+  --text-primary:  #e8e2d9;
+  --text-secondary:#9b9489;
+  --text-muted:    #5c5750;
+
+  --accent:        #d4a847;       /* amber — old newspaper ink */
+  --accent-dim:    #a07c28;
+  --accent-glow:   rgba(212, 168, 71, 0.12);
+
+  --fake:          #c0392b;
+  --fake-bg:       rgba(192, 57, 43, 0.10);
+  --fake-border:   rgba(192, 57, 43, 0.30);
+
+  --real:          #27ae60;
+  --real-bg:       rgba(39, 174, 96, 0.10);
+  --real-border:   rgba(39, 174, 96, 0.30);
+
+  --font-display:  'Playfair Display', Georgia, serif;
+  --font-body:     'Lora', Georgia, serif;
+  --font-mono:     'JetBrains Mono', 'Courier New', monospace;
+
+  --radius:        4px;
+  --transition:    0.18s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
