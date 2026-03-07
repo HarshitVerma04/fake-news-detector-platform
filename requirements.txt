@@ -1,0 +1,31 @@
+# --- Data & ML ---
+# numpy 2.x is required for Python 3.13 support
+pandas==2.2.3
+numpy==2.2.3
+scikit-learn==1.6.1
+joblib==1.4.2
+nltk==3.9.1
+matplotlib==3.10.1
+seaborn==0.13.2
+
+# --- Backend ---
+fastapi==0.115.11
+uvicorn[standard]==0.34.0
+python-dotenv==1.0.1
+pydantic==2.10.6
+pydantic-settings==2.8.1
+
+# --- Database ---
+sqlalchemy==2.0.39
+psycopg2-binary==2.9.10
+alembic==1.15.1
+
+# --- Optional: Transformer model (GPU) ---
+# torch==2.6.0
+# transformers==4.49.0
+# datasets==3.3.2
+
+# --- Dev / Testing ---
+pytest==8.3.5
+httpx==0.28.1
+anyio==4.9.0
