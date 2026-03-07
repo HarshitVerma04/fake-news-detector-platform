@@ -1,0 +1,30 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data (too large for git — use DVC or manual download)
+data/raw/
+data/processed/
+
+# Saved models
+model/saved/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend
+node_modules/
+frontend/build/
+frontend/dist/
+
+# IDE
+.vscode/
+.idea/
