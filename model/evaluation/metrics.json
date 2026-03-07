@@ -1,0 +1,33 @@
+{
+  "model": "TF-IDF + LogisticRegression",
+  "tfidf_config": {
+    "max_features": 50000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "sublinear_tf": true
+  },
+  "train": {
+    "split": "train",
+    "accuracy": 0.9923,
+    "precision": 0.9912,
+    "recall": 0.9939,
+    "f1": 0.9926
+  },
+  "val": {
+    "split": "val",
+    "accuracy": 0.9749,
+    "precision": 0.971,
+    "recall": 0.9802,
+    "f1": 0.9756
+  },
+  "test": {
+    "split": "test",
+    "accuracy": 0.9718,
+    "precision": 0.9678,
+    "recall": 0.9775,
+    "f1": 0.9727
+  }
+}
