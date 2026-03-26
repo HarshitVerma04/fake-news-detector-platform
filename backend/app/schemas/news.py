@@ -21,6 +21,7 @@ class PredictResponse(BaseModel):
     id: int
     prediction: str          # "Fake" or "Real"
     confidence: float        # 0.0 - 1.0
+    model_used: str          # "tfidf" or "distilbert"
     created_at: datetime
 
     model_config = {"from_attributes": True}
@@ -31,6 +32,7 @@ class HistoryItem(BaseModel):
     news_text: str
     prediction: str
     confidence: float
+    model_used: str
     created_at: datetime
 
     model_config = {"from_attributes": True}
@@ -39,3 +41,10 @@ class HistoryItem(BaseModel):
 class HistoryResponse(BaseModel):
     total: int
     items: list[HistoryItem]
+
+
+class ModelInfo(BaseModel):
+    active_model: str
+    available_models: list[str]
+    tfidf_metrics: dict | None = None
+    distilbert_metrics: dict | None = None
