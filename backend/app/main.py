@@ -5,11 +5,16 @@ backend/app/main.py
 import logging
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from slowapi import _rate_limit_exceeded_handler
+from slowapi.errors import RateLimitExceeded
+from slowapi.middleware import SlowAPIMiddleware
 
 from backend.app.api.routes import router
 from backend.app.api.auth_routes import router as auth_router
+from backend.app.core.limiter import limiter
 from backend.app.core.model_loader import load_model
 from backend.app.db.database import engine
 from backend.app.db.models import Base
@@ -33,14 +38,26 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Fake News Detection API",
-    version="2.0.0",
+    title="SatyaParichay — Fake News Detection API",
+    description="Satya (सत्य) — Truth | Parichay (परिचय) — Introduction",
+    version="3.0.0",
     lifespan=lifespan,
 )
 
+# Rate limiter
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+app.add_middleware(SlowAPIMiddleware)
+
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:4000", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:3000",
+        "http://localhost:5173",
+        "http://127.0.0.1:4000",
+        "http://127.0.0.1:5173",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

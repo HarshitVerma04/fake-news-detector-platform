@@ -26,7 +26,7 @@ lxml_html_clean==0.1.1
 
 # --- Authentication ---
 python-jose[cryptography]==3.3.0
-#passlib[bcrypt]==1.7.4
+passlib[bcrypt]==1.7.4
 python-multipart==0.0.9
 
 # --- Transformer model (GPU - Phase 6) ---
@@ -41,4 +41,8 @@ pytest==8.3.5
 httpx==0.28.1
 anyio==4.9.0
 
-bcrypt
+# --- Rate limiting ---
+slowapi==0.1.9
+
+# --- Email ---
+fastapi-mail==1.4.1
