@@ -1,5 +1,4 @@
 # --- Data & ML ---
-# numpy 2.x is required for Python 3.13 support
 pandas==2.2.3
 numpy==2.2.3
 scikit-learn==1.6.1
@@ -20,10 +19,19 @@ sqlalchemy==2.0.39
 psycopg2-binary==2.9.10
 alembic==1.15.1
 
+# --- URL fetching ---
+newspaper3k==0.2.8
+lxml==5.2.2
+lxml_html_clean==0.1.1
+
+# --- Authentication ---
+python-jose[cryptography]==3.3.0
+#passlib[bcrypt]==1.7.4
+python-multipart==0.0.9
+
 # --- Transformer model (GPU - Phase 6) ---
-# PyTorch must be installed separately FIRST with CUDA support:
+# Install PyTorch with CUDA first:
 #   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-# Then install these:
 transformers==4.49.0
 datasets==3.3.2
 accelerate==1.4.0
@@ -32,3 +40,5 @@ accelerate==1.4.0
 pytest==8.3.5
 httpx==0.28.1
 anyio==4.9.0
+
+bcrypt
